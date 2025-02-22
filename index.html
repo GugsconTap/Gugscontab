@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gugscon Tap</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        #score { font-size: 24px; }
+        #tap { font-size: 20px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Gugscon Tap</h1>
+    <p id="score">Очки: 0</p>
+    <button id="tap">Тап!</button>
+
+    <script>
+        let score = 0;
+        document.getElementById("tap").addEventListener("click", function() {
+            score++;
+            document.getElementById("score").innerText = "Очки: " + score;
+        });
+    </script>
+</body>
+</html>
