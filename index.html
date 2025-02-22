@@ -1,24 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gugscon Tap</title>
     <style>
-        body { text-align: center; font-family: Arial, sans-serif; }
-        #score { font-size: 24px; }
-        #tap { font-size: 20px; padding: 10px; }
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #f8e71c;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        #score {
+            font-size: 32px;
+            font-weight: bold;
+            margin: 20px;
+        }
+        #energy {
+            font-size: 24px;
+            color: red;
+            margin-bottom: 20px;
+        }
+        #tap {
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        #duck {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
     <h1>Gugscon Tap</h1>
     <p id="score">Очки: 0</p>
-    <button id="tap">Тап!</button>
+    <p id="energy">Энергия: 10</p>
+    <button id="tap">
+        <img id="duck" src="ТВОЯ_ССЫЛКА_НА_УТКУ" alt="Утка">
+    </button>
 
     <script>
         let score = 0;
+        let energy = 10;
+
         document.getElementById("tap").addEventListener("click", function() {
-            score++;
-            document.getElementById("score").innerText = "Очки: " + score;
+            if (energy > 0) {
+                score++;
+                energy--;
+                document.getElementById("score").innerText = "Очки: " + score;
+                document.getElementById("energy").innerText = "Энергия: " + energy;
+            } else {
+                alert("Энергия закончилась! Подожди восстановления.");
+            }
         });
+
+        setInterval(() => {
+            if (energy < 10) {
+                energy++;
+                document.getElementById("energy").innerText = "Энергия: " + energy;
+            }
+        }, 5000);
     </script>
 </body>
-</html>
+</html>(
